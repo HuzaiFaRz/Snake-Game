@@ -80,3 +80,12 @@ main {
   color: lightgreen;
   position: relative;
 }
+
+.snake {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+
+  background-color: red;
+  border-radius: 50px;
+}
