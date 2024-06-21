@@ -19,49 +19,33 @@ main {
 }
 
 .bg {
-  position: relative;
-  overflow: hidden;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   min-width: 100%;
   min-height: 100%;
   /* height: 100%; */
   background-image: url(Bg/bg.jpg);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: 100%;
-}
-.bg::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
+  background-size: 100vw 100vh;
 }
 
 .snake-game {
-  width: 70%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   background-color: transparent;
-  border: 1px solid green;
-  box-shadow: 2px 5px 20px green;
-  border-radius: 20px;
-  background-color: rgba(52, 160, 56, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .snake-game-header {
   width: 100%;
-  height: 60px;
-  background-color: green;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
+  height: 100px;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -80,8 +64,9 @@ main {
 
 .snake-body {
   position: relative;
-  width: 100%;
-  height: 556px;
+  width: 800px;
+  height: 400px;
+  border: 5px solid green;
 }
 
 .snake {
