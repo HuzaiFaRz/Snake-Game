@@ -65,12 +65,25 @@ main {
   height: 600px;
   background-color: black;
 }
+
+
+.head{
+  background-color: yellow;
+}
+
+
+
+
+
 .snake {
-  width: 25px;
-  height: 25px;
-  border-radius: 50px;
   background-color: red;
 }
+
+.food{
+  background-color: blue;
+}
+
+
 @media (max-width: 600px) {
   .snake-game {
     width: 100%;
