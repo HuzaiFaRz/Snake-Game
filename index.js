@@ -18,10 +18,6 @@ console.log(PerformancePaintTiming);
 
 
 
-
-
-
-
 // var snake = document.querySelector(".snake");
 // console.log(snake.clientLeft);
 
