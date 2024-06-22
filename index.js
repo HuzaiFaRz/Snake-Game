@@ -1,10 +1,14 @@
+var snakeGame = document.querySelector(".snake-game");
 var gameRunner = new Audio("game_runnner.mp3");
 var gamePlay = new Audio("game_play.mp3");
 var gameOver = new Audio("game_over.wav");
 var gameFoodEating = new Audio("food_eating_sound.wav");
+var snakeSpeed = 20;
+var snakeDirection = [{ x: 15, y: 50 }];
+var snake = document.createElement("div");
+snake.classList.add("snake");
 
-gameRunner.play();
-
+snakeGame.appendChild(snake);
 // var snake = document.querySelector(".snake");
 // console.log(snake.clientLeft);
 
