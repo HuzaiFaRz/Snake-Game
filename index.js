@@ -1,24 +1,20 @@
-var snakeGame = document.querySelector(".snake-game");
-var gameRunner = new Audio("game_runnner.mp3");
-var gamePlay = new Audio("game_play.mp3");
-var gameOver = new Audio("game_over.wav");
-var gameFoodEating = new Audio("food_eating_sound.wav");
-var snakeSpeed = 20;
-var snakeDirection = { x: 0, y: 0 };
-var snake = document.createElement("div");
+let snakeGame = document.querySelector(".snake-game");
+const gameRunner = new Audio("game_runnner.mp3");
+const gamePlay = new Audio("game_play.mp3");
+const gameOver = new Audio("game_over.wav");
+const gameFoodEating = new Audio("food_eating_sound.wav");
+let snakeSpeed = 20;
+let snakeDirection = { x: 0, y: 0 };
+let snake = document.createElement("div");
 snake.classList.add("snake");
 snakeGame.appendChild(snake);
 
+function mainGame(a) {
+  window.requestAnimationFrame(mainGame);
+  console.log(a);
+}
 
-
-
-
-console.log(PerformancePaintTiming);
-
-
-
-
-// var snake = document.querySelector(".snake");
+// let snake = document.querySelector(".snake");
 // console.log(snake.clientLeft);
 
 // snake.addEventListener("keyup", function (y) {
@@ -30,8 +26,8 @@ console.log(PerformancePaintTiming);
 // }
 
 // mover();
-// var snakeY = snake.clientTop;
-// var snakeX = snake.clientLeft;
+// let snakeY = snake.clientTop;
+// let snakeX = snake.clientLeft;
 // document.body.addEventListener("keydown", function (e) {
 //   if (e.key === "ArrowUp") {
 //     if (snakeY == 0) {
