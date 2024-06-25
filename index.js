@@ -6,11 +6,13 @@ const gamePlaySound = new Audio("game_play.mp3");
 const gameOverSound = new Audio("game_over.wav");
 const gameTurnSound = new Audio("game-turn.mp3");
 const gameFoodEatingSound = new Audio("food_eating_sound.wav");
-let snakeSpeed = 20;
+let snakeSpeed = 2;
 let snakeDirection = { x: 0, y: 0 };
 let snakePosition = [{ x: 13, y: 10 }];
 let snakePaintTime = 0;
 let score = 0;
+let foodDirectionA = 2;
+let foodDirectionB = 16;
 let foodDirection = { x: 10, y: 12 };
 
 function mainGame(a) {
@@ -31,7 +33,36 @@ function gameRunner() {
     snakeGameResultGuideNess.textContent =
       "Game Over Press Any Enter To Again Start a Game";
   }
+  // if (snakePosition[]) {
 
+  // }
+
+  if (
+    snakePosition[0].x === foodDirection.x &&
+    snakePosition[0].y === foodDirection.y
+  ) {
+    snakePosition.unshift({
+      x: snakePosition[0].x + snakeDirection.x,
+      y: snakePosition[0].y + snakeDirection.y,
+    });
+    foodDirection = {
+      x: Math.round(
+        foodDirectionA + (foodDirectionB - foodDirectionA) * Math.random()
+      ),
+      y: Math.round(
+        foodDirectionA + (foodDirectionB - foodDirectionA) * Math.random()
+      ),
+    };
+  }
+
+  for (let i = snakePosition.length; i >= 0; i--) {
+    // snakePosition[i]
+    // console.log(snakePosition[i]);
+  }
+
+  // console.log(snakePosition.length);
+
+  // console.log(foodDirection);
   snakeGameBoard.innerHTML = "";
   snakePosition.forEach(function (b, c) {
     let snake = document.createElement("div");
@@ -76,7 +107,7 @@ window.addEventListener("keydown", function (e) {
   }
 });
 
-function snakeCollide() {}
+function snakeCollide(snakeCollide) {}
 
 window.requestAnimationFrame(mainGame);
 
