@@ -66,23 +66,15 @@ main {
   background-color: black;
 }
 
-
-.head{
-  background-color: yellow;
-}
-
-
-
-
-
-.snake {
+.snakeIncreasing {
   background-color: red;
 }
-
-.food{
+.snakeTop {
+  background-color: yellow;
+}
+.food {
   background-color: blue;
 }
-
 
 @media (max-width: 600px) {
   .snake-game {

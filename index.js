@@ -7,6 +7,8 @@ let snakeSpeed = 20;
 let snakeDirection = { x: 0, y: 0 };
 let snakePosition = [{ x: 13, y: 10 }];
 let snakePaintTime = 0;
+let score = 0;
+let foodDirection = { x: 10, y: 12 };
 
 function mainGame(a) {
   window.requestAnimationFrame(mainGame);
@@ -21,13 +23,32 @@ function gameRunner() {
   snakeGameBoard.innerHTML = "";
   snakePosition.forEach(function (b, c) {
     let snake = document.createElement("div");
-    snake.classList.add("snake");
+    snake.classList.add("snakeIncreasing");
     snakeGameBoard.appendChild(snake);
     snake.style.gridRowStart = b.x;
     snake.style.gridColumnStart = b.y;
+    if (c == 0) {
+      snake.classList.add("snakeTop");
+    }
   });
+
+  let food = document.createElement("div");
+  food.classList.add("food");
+  food.style.gridRowStart = foodDirection.x;
+  food.style.gridColumnStart = foodDirection.y;
+  snakeGameBoard.appendChild(food);
 }
-mainGame();
+
+window.requestAnimationFrame(mainGame);
+
+window.addEventListener("keydown", function (e) {
+  if (e.key === "ArrowUp") {
+  } else if (e.key === "ArrowDown") {
+  } else if (e.key === "ArrowLeft") {
+  } else if (e.key === "ArrowRight") {
+  }
+});
+
 // let snake = document.querySelector(".snake");
 // console.log(snake.clientLeft);
 
