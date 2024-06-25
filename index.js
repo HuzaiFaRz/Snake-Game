@@ -42,6 +42,8 @@ function gameRunner() {
 window.requestAnimationFrame(mainGame);
 
 window.addEventListener("keydown", function (e) {
+  gameRunnerSound.play();
+
   if (e.key === "ArrowUp") {
   } else if (e.key === "ArrowDown") {
   } else if (e.key === "ArrowLeft") {
