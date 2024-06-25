@@ -1,3 +1,5 @@
+const snakeGamResult = document.querySelector(".game-result");
+const snakeGameResultGuideNess = document.querySelector(".guide");
 const snakeGameBoard = document.querySelector(".snake-game");
 const gameRunnerSound = new Audio("game_runnner.mp3");
 const gamePlaySound = new Audio("game_play.mp3");
@@ -21,6 +23,15 @@ function mainGame(a) {
 }
 
 function gameRunner() {
+  if (snakeCollide(snakePosition)) {
+    gameOverSound.play();
+    gameRunnerSound.pause();
+    snakeDirection = { x: 0, y: 0 };
+    snakeGamResult.style.display = "flex";
+    snakeGameResultGuideNess.textContent =
+      "Game Over Press Any Enter To Again Start a Game";
+  }
+
   snakeGameBoard.innerHTML = "";
   snakePosition.forEach(function (b, c) {
     let snake = document.createElement("div");
@@ -41,22 +52,31 @@ function gameRunner() {
 }
 
 window.addEventListener("keydown", function (e) {
-  gameRunnerSound.play();
+  if (e.key === "Enter") {
+    return (snakeGamResult.style.display = "none");
+  }
 
+  gameRunnerSound.play();
   if (e.key === "ArrowUp") {
     gameTurnSound.play();
     snakeDirection.y = -1;
+    snakeDirection.x = -1;
   } else if (e.key === "ArrowDown") {
     gameTurnSound.play();
     snakeDirection.y = 1;
+    snakeDirection.x = -1;
   } else if (e.key === "ArrowLeft") {
     gameTurnSound.play();
     snakeDirection.x = 1;
+    snakeDirection.x = -1;
   } else if (e.key === "ArrowRight") {
     gameTurnSound.play();
     snakeDirection.x = -1;
+    snakeDirection.x = -1;
   }
 });
+
+function snakeCollide() {}
 
 window.requestAnimationFrame(mainGame);
 
