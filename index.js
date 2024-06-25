@@ -1,19 +1,33 @@
-let snakeGame = document.querySelector(".snake-game");
-const gameRunner = new Audio("game_runnner.mp3");
-const gamePlay = new Audio("game_play.mp3");
-const gameOver = new Audio("game_over.wav");
-const gameFoodEating = new Audio("food_eating_sound.wav");
+const snakeGameBoard = document.querySelector(".snake-game");
+const gameRunnerSound = new Audio("game_runnner.mp3");
+const gamePlaySound = new Audio("game_play.mp3");
+const gameOverSound = new Audio("game_over.wav");
+const gameFoodEatingSound = new Audio("food_eating_sound.wav");
 let snakeSpeed = 20;
 let snakeDirection = { x: 0, y: 0 };
-let snake = document.createElement("div");
-snake.classList.add("snake");
-snakeGame.appendChild(snake);
+let snakePosition = [{ x: 13, y: 10 }];
+let snakePaintTime = 0;
 
 function mainGame(a) {
   window.requestAnimationFrame(mainGame);
-  console.log(a);
+  if (a - snakePaintTime / 1000 < 1 / snakeSpeed) {
+    return;
+  }
+  snakePaintTime = a;
+  gameRunner();
 }
 
+function gameRunner() {
+  snakeGameBoard.innerHTML = "";
+  snakePosition.forEach(function (b, c) {
+    let snake = document.createElement("div");
+    snake.classList.add("snake");
+    snakeGameBoard.appendChild(snake);
+    snake.style.gridRowStart = b.x;
+    snake.style.gridColumnStart = b.y;
+  });
+}
+mainGame();
 // let snake = document.querySelector(".snake");
 // console.log(snake.clientLeft);
 
