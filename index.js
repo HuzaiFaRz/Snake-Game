@@ -2,6 +2,7 @@ const snakeGameBoard = document.querySelector(".snake-game");
 const gameRunnerSound = new Audio("game_runnner.mp3");
 const gamePlaySound = new Audio("game_play.mp3");
 const gameOverSound = new Audio("game_over.wav");
+const gameTurnSound = new Audio("game-turn.mp3");
 const gameFoodEatingSound = new Audio("food_eating_sound.wav");
 let snakeSpeed = 20;
 let snakeDirection = { x: 0, y: 0 };
@@ -39,17 +40,25 @@ function gameRunner() {
   snakeGameBoard.appendChild(food);
 }
 
-window.requestAnimationFrame(mainGame);
-
 window.addEventListener("keydown", function (e) {
   gameRunnerSound.play();
 
   if (e.key === "ArrowUp") {
+    gameTurnSound.play();
+    snakeDirection.y = -1;
   } else if (e.key === "ArrowDown") {
+    gameTurnSound.play();
+    snakeDirection.y = 1;
   } else if (e.key === "ArrowLeft") {
+    gameTurnSound.play();
+    snakeDirection.x = 1;
   } else if (e.key === "ArrowRight") {
+    gameTurnSound.play();
+    snakeDirection.x = -1;
   }
 });
+
+window.requestAnimationFrame(mainGame);
 
 // let snake = document.querySelector(".snake");
 // console.log(snake.clientLeft);
