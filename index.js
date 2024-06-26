@@ -6,7 +6,7 @@ const gamePlaySound = new Audio("game_play.mp3");
 const gameOverSound = new Audio("game_over.wav");
 const gameTurnSound = new Audio("game-turn.mp3");
 const gameFoodEatingSound = new Audio("food_eating_sound.wav");
-let snakeSpeed =4;
+let snakeSpeed = 6;
 let snakeDirection = { x: 0, y: 0 };
 let snakePosition = [{ x: 8, y: 9 }];
 let snakePaintTime = 0;
@@ -17,7 +17,7 @@ let foodDirection = { x: 5, y: 5 };
 
 function mainGame(a) {
   window.requestAnimationFrame(mainGame);
-  if (a - snakePaintTime / 1000 < 1 / snakeSpeed) {
+  if ((a - snakePaintTime) / 1000 < 1 / snakeSpeed) {
     return;
   }
   snakePaintTime = a;
