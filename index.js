@@ -123,6 +123,7 @@ function gameRunner() {
 
 function snakeCollide() {
   score = 0;
+  snakeSpeed = 3;
   snakeGameScore.textContent = `Score: ${score}`;
   snakeGamResult.style.display = "flex";
   snakeGameResultGuideNess.textContent =
