@@ -37,10 +37,10 @@ function gameRunner() {
     snakePosition[0].x === foodDirection.x &&
     snakePosition[0].y === foodDirection.y
   ) {
-    foodRandomColor = [
-      Math.floor(Math.random() * 1000000),
-      Math.floor(Math.random() * 200000),
-    ];
+    // foodRandomColor = [
+    //   Math.floor(Math.random() * 1000000),
+    //   Math.floor(Math.random() * 200000),
+    // ];
     gameFoodEatingSound.play();
     score += 1;
     highScore += 1;
@@ -72,8 +72,8 @@ function gameRunner() {
         foodDirectionA + (foodDirectionB - foodDirectionA) * Math.random()
       ),
     };
-    food.style.background = `#${foodRandomColor[0]}`;
-    food.style.boxShadow = `0px 0px 20px ${foodRandomColor[1]}`;
+    // food.style.background = `#${foodRandomColor[0]}`;
+    // food.style.boxShadow = `0px 0px 20px ${foodRandomColor[1]}`;
   }
 
   for (let i = snakePosition.length - 2; i >= 0; i--) {

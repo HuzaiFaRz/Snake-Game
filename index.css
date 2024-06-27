@@ -69,20 +69,31 @@ main {
 }
 
 .snakeIncreasing {
-  background: linear-gradient(white, plum);
-  box-shadow: 1px 1px 20px purple;
-  border-radius: 50%;
+  background: url(Favicon/snakeback.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.5);
+  background-color: transparent;
+  box-shadow: none;
 }
 .snakeTop {
-  background: linear-gradient(rgb(86, 176, 125), rgb(81, 182, 81));
-  box-shadow: 1px 1px 20px green;
-  border-radius: 50%;
+  background: url(Favicon/icons8-year-of-snake-64.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.1);
+  background-color: transparent;
+  box-shadow: none;
 }
 .food {
-  transition: all 0.3 linear;
-  background: linear-gradient(white, plum);
-  box-shadow: 1px 1px 20px purple;
-  border-radius: 50%;
+  background: url(Favicon/food2.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transform: scale(1.1);
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .game-result {
