@@ -69,13 +69,20 @@ main {
 }
 
 .snakeIncreasing {
-  background-color: red;
+  background: linear-gradient(white, plum);
+  box-shadow: 1px 1px 20px purple;
+  border-radius: 50%;
 }
 .snakeTop {
-  background-color: yellow;
+  background: linear-gradient(rgb(86, 176, 125), rgb(81, 182, 81));
+  box-shadow: 1px 1px 20px green;
+  border-radius: 50%;
 }
 .food {
-  background-color: blue;
+  transition: all 0.3 linear;
+  background: linear-gradient(white, plum);
+  box-shadow: 1px 1px 20px purple;
+  border-radius: 50%;
 }
 
 .game-result {

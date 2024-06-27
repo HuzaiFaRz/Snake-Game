@@ -19,6 +19,8 @@ let foodDirectionB = 16;
 let foodDirection = { x: 5, y: 5 };
 snakeGameScore.textContent = `Score: ${score}`;
 snakeGameHighScore.textContent = `High Score: ${highscore}`;
+let foodRandomColor;
+let food = document.createElement("div");
 function mainGame(a) {
   window.requestAnimationFrame(mainGame);
   if ((a - snakePaintTime) / 1000 < 1 / snakeSpeed) {
@@ -31,6 +33,11 @@ function mainGame(a) {
 function gameRunner() {
   if (snakeCollide()) {
     gameOverSound.play();
+
+    gameOverSound.addEventListener("ended", function () {
+      gameOverSound.pause();
+    });
+
     gameRunnerSound.pause();
     snakeDirection = { x: 0, y: 0 };
     snakeGamResult.style.display = "flex";
@@ -42,30 +49,36 @@ function gameRunner() {
     snakePosition[0].x === foodDirection.x &&
     snakePosition[0].y === foodDirection.y
   ) {
+    foodRandomColor = [
+      Math.floor(Math.random() * 1000000),
+      Math.floor(Math.random() * 200000),
+    ];
     gameFoodEatingSound.play();
     score += 1;
     highscore += 1;
     snakeGameScore.textContent = `Score: ${score}`;
     snakeGameHighScore.textContent = `High Score: ${highscore}`;
+    localStorage.setItem("Score", JSON.stringify(score));
+    let highScoreSave = localStorage.setItem(
+      "HighScore",
+      JSON.stringify(highscore)
+    );
+    let ScoreSave = localStorage.setItem("Score", JSON.stringify(score));
+    highscore += highScoreSave;
+
     if (score <= 6 || highscore <= 6) {
       snakeSpeed = 6;
-      console.log(snakeSpeed);
     } else if (score <= 12 || highscore <= 12) {
       snakeSpeed = 9;
-      console.log(snakeSpeed);
     } else if (score <= 20 || highscore <= 20) {
       snakeSpeed = 14;
-      console.log(snakeSpeed);
     } else if (score <= 30 || highscore <= 30) {
       snakeSpeed = 18;
-      console.log(snakeSpeed);
     } else if (score <= 50 || highscore <= 50) {
       snakeSpeed = 25;
-      console.log(snakeSpeed);
     } else {
       snakeSpeed = 3;
     }
-
     snakePosition.unshift({
       x: snakePosition[0].x + snakeDirection.x,
       y: snakePosition[0].y + snakeDirection.y,
@@ -78,6 +91,10 @@ function gameRunner() {
         foodDirectionA + (foodDirectionB - foodDirectionA) * Math.random()
       ),
     };
+    food.style.background = `#${foodRandomColor[0]}`;
+    food.style.boxShadow = `0px 0px 20px ${foodRandomColor[1]}`;
+
+    console.log(`0px 0px 20px #${foodRandomColor[1]}`);
   }
 
   for (let i = snakePosition.length - 2; i >= 0; i--) {
@@ -99,7 +116,6 @@ function gameRunner() {
     }
   });
 
-  let food = document.createElement("div");
   food.classList.add("food");
   food.style.gridRowStart = foodDirection.x;
   food.style.gridColumnStart = foodDirection.y;
@@ -111,28 +127,29 @@ window.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
     gameRunnerSound.play();
     gameRunnerSound.addEventListener("ended", function () {
-      gameRunnerSound.play();
+      // gameRunnerSound.play();
     });
 
     snakeGamResult.style.display = "none";
 
     snakeDirection = { x: 0, y: 0 };
   } else if (e.key === "ArrowUp") {
-    gameTurnSound.play();
+    // gameTurnSound.play();
     snakeDirection = { y: 0, x: -1 };
   } else if (e.key === "ArrowDown") {
-    gameTurnSound.play();
+    // gameTurnSound.play();
     snakeDirection = { y: 0, x: 1 };
   } else if (e.key === "ArrowLeft") {
-    gameTurnSound.play();
+    // gameTurnSound.play();
     snakeDirection = { y: -1, x: 0 };
   } else if (e.key === "ArrowRight") {
-    gameTurnSound.play();
+    // gameTurnSound.play();
     snakeDirection = { y: 1, x: 0 };
   } else {
     return false;
   }
 });
+
 window.requestAnimationFrame(mainGame);
 
 // // // let snake = document.querySelector(".snake");
