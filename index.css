@@ -72,7 +72,7 @@ main {
   background: linear-gradient(orange, red);
   box-shadow: 0px 0px 50px white;
   border-radius: 12px;
-  /* transform: scale(1.3); */
+  transform: scale(1.3);
 }
 .snakeTop {
   background: url(Favicon/icons8-year-of-snake-64.png);
