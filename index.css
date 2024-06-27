@@ -129,3 +129,12 @@ main {
     width: 100%;
   }
 }
+@media (max-width: 500px) {
+  .game-result {
+ padding: 0 10px;
+  }
+  .game-result-content {
+    width: 100%;
+  }
+  
+}
