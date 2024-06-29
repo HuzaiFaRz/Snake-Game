@@ -8,7 +8,7 @@ const gamePlaySound = new Audio("game_play.mp3");
 const gameOverSound = new Audio("game_over.wav");
 const gameTurnSound = new Audio("game-turn.mp3");
 const gameFoodEatingSound = new Audio("food_eating_sound.wav");
-let snakeSpeed = 3;
+let snakeSpeed = 4;
 let snakeDirection = { x: 0, y: 0 };
 let snakePosition = [{ x: 8, y: 9 }];
 let snakePaintTime = 0;
@@ -47,18 +47,24 @@ function gameRunner() {
     snakeGameScore.textContent = `Score: ${score}`;
     snakeGameHighScore.textContent = `High Score: ${highScore}`;
 
-    if (score <= 6 || highScore <= 6) {
-      snakeSpeed = 6;
-    } else if (score <= 12 || highScore <= 12) {
+    if (score < 6 || highScore < 6) {
+      snakeSpeed++;
+      console.log(snakeSpeed);
+    } else if (score < 12 || highScore < 12) {
       snakeSpeed = 9;
-    } else if (score <= 20 || highScore <= 20) {
+      console.log(snakeSpeed);
+    } else if (score < 20 || highScore < 20) {
       snakeSpeed = 14;
-    } else if (score <= 30 || highScore <= 30) {
+      console.log(snakeSpeed);
+    } else if (score < 30 || highScore < 30) {
       snakeSpeed = 18;
-    } else if (score <= 50 || highScore <= 50) {
+      console.log(snakeSpeed);
+    } else if (score < 50 || highScore < 50) {
       snakeSpeed = 25;
+      console.log(snakeSpeed);
     } else {
       snakeSpeed = 3;
+      console.log(snakeSpeed);
     }
     snakePosition.unshift({
       x: snakePosition[0].x + snakeDirection.x,
@@ -112,16 +118,17 @@ function gameRunner() {
     }
   }
   if (
-    snakePosition[0].x < 0 ||
-    snakePosition[0].x > 18 ||
-    snakePosition[0].y < 0 ||
-    snakePosition[0].y > 18
+    snakePosition[0].x <= 0 ||
+    snakePosition[0].x >= 18 ||
+    snakePosition[0].y <= 0 ||
+    snakePosition[0].y >= 18
   ) {
     snakeCollide();
   }
 }
 
 function snakeCollide() {
+  gameOverSound.play();
   score = 0;
   snakeSpeed = 3;
   snakeGameScore.textContent = `Score: ${score}`;
@@ -134,6 +141,10 @@ function snakeCollide() {
 }
 window.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
+    // score = 0;
+    // highScore = 0;
+    // localStorage.removeItem("Score", JSON.stringify(score));
+    // localStorage.removeItem("HighScore", JSON.stringify(highScore));
     gameRunnerSound.play();
     gameRunnerSound.addEventListener("ended", function () {
       gameRunnerSound.play();
