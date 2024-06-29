@@ -49,22 +49,18 @@ function gameRunner() {
 
     if (score < 6 || highScore < 6) {
       snakeSpeed++;
-      console.log(snakeSpeed);
     } else if (score < 12 || highScore < 12) {
-      snakeSpeed = 9;
-      console.log(snakeSpeed);
+      snakeSpeed = 8;
     } else if (score < 20 || highScore < 20) {
-      snakeSpeed = 14;
-      console.log(snakeSpeed);
+      snakeSpeed = 11;
     } else if (score < 30 || highScore < 30) {
-      snakeSpeed = 18;
-      console.log(snakeSpeed);
+      snakeSpeed = 15;
+      foodDirectionA = 1;
+      foodDirectionB = 17;
     } else if (score < 50 || highScore < 50) {
-      snakeSpeed = 25;
-      console.log(snakeSpeed);
+      snakeSpeed = 20;
     } else {
       snakeSpeed = 3;
-      console.log(snakeSpeed);
     }
     snakePosition.unshift({
       x: snakePosition[0].x + snakeDirection.x,
@@ -129,6 +125,7 @@ function gameRunner() {
 
 function snakeCollide() {
   gameOverSound.play();
+  gameRunnerSound.pause();
   score = 0;
   snakeSpeed = 3;
   snakeGameScore.textContent = `Score: ${score}`;
@@ -141,30 +138,34 @@ function snakeCollide() {
 }
 window.addEventListener("keydown", function (e) {
   if (e.key === "Enter") {
+    gameTurnSound.play();
     // score = 0;
     // highScore = 0;
     // localStorage.removeItem("Score", JSON.stringify(score));
     // localStorage.removeItem("HighScore", JSON.stringify(highScore));
+    snakeGamResult.style.display = "none";
+    snakeDirection = { x: 0, y: 0 };
+  } else if (e.key === "ArrowUp") {
+    snakeDirection = { y: 0, x: -1 };
+  } else if (e.key === "ArrowDown") {
+    snakeDirection = { y: 0, x: 1 };
+  } else if (e.key === "ArrowLeft") {
+    snakeDirection = { y: -1, x: 0 };
+  } else if (e.key === "ArrowRight") {
+    snakeDirection = { y: 1, x: 0 };
+  } else {
+    return false;
+  }
+  if (
+    e.key === "ArrowUp" ||
+    e.key === "ArrowDown" ||
+    e.key === "ArrowLeft" ||
+    e.key === "ArrowRight"
+  ) {
     gameRunnerSound.play();
     gameRunnerSound.addEventListener("ended", function () {
       gameRunnerSound.play();
     });
-    snakeGamResult.style.display = "none";
-    snakeDirection = { x: 0, y: 0 };
-  } else if (e.key === "ArrowUp") {
-    gameTurnSound.play();
-    snakeDirection = { y: 0, x: -1 };
-  } else if (e.key === "ArrowDown") {
-    gameTurnSound.play();
-    snakeDirection = { y: 0, x: 1 };
-  } else if (e.key === "ArrowLeft") {
-    gameTurnSound.play();
-    snakeDirection = { y: -1, x: 0 };
-  } else if (e.key === "ArrowRight") {
-    gameTurnSound.play();
-    snakeDirection = { y: 1, x: 0 };
-  } else {
-    return false;
   }
 });
 
