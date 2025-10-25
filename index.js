@@ -171,6 +171,24 @@ window.addEventListener("keydown", function (e) {
 
 window.requestAnimationFrame(mainGame);
 
+window.addEventListener("resize", () => {
+  if (window.innerWidth <= 800) {
+    document.body.innerHTML = `
+      <h1 style="
+        color: #ff4444;
+        text-align: center;
+        margin-top: 40vh;
+        font-family: 'Poppins', sans-serif;
+        font-size: 2rem;
+      ">
+        📱 This game is only available on larger screens (desktop/laptop)
+      </h1>
+    `;
+  } else {
+    location.reload();
+  }
+});
+
 // // // let snake = document.querySelector(".snake");
 // // // console.log(snake.clientLeft);
 
