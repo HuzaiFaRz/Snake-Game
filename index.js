@@ -68,10 +68,10 @@ function gameRunner() {
     });
     foodDirection = {
       x: Math.round(
-        foodDirectionA + (foodDirectionB - foodDirectionA) * Math.random()
+        foodDirectionA + (foodDirectionB - foodDirectionA) * Math.random(),
       ),
       y: Math.round(
-        foodDirectionA + (foodDirectionB - foodDirectionA) * Math.random()
+        foodDirectionA + (foodDirectionB - foodDirectionA) * Math.random(),
       ),
     };
     // food.style.background = `#${foodRandomColor[0]}`;
@@ -171,7 +171,7 @@ window.addEventListener("keydown", function (e) {
 
 window.requestAnimationFrame(mainGame);
 
-window.addEventListener("resize", () => {
+const whatSizeOn = () => {
   if (window.innerWidth <= 800) {
     document.body.innerHTML = `
       <h1 style="
@@ -184,10 +184,13 @@ window.addEventListener("resize", () => {
         📱 This game is only available on larger screens (desktop/laptop)
       </h1>
     `;
+    return;
   } else {
     location.reload();
   }
-});
+};
+
+window.addEventListener("resize", whatSizeOn);
 
 // // // let snake = document.querySelector(".snake");
 // // // console.log(snake.clientLeft);
